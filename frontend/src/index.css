@@ -1,0 +1,76 @@
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 300;
+  src: local(""),
+    url("./fonts/roboto-v27-latin_cyrillic-300.woff2") format("woff2"),
+    url("./fonts/roboto-v27-latin_cyrillic-300.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: local(""),
+    url("./fonts/roboto-v27-latin_cyrillic-regular.woff2") format("woff2"),
+    url("./fonts/roboto-v27-latin_cyrillic-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  src: local(""),
+    url("./fonts/roboto-v27-latin_cyrillic-700.woff2") format("woff2"),
+    url("./fonts/roboto-v27-latin_cyrillic-700.woff") format("woff");
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #ffffff;
+  font-size: 16px;
+  color: #212121;
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+}
+
+input,
+button {
+  border-radius: 0;
+  outline: 0;
+  font: inherit;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.container {
+  max-width: 1340px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.search-app {
+  padding: 2.5rem 0;
+}
