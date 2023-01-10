@@ -11,5 +11,7 @@ urlpatterns = [
     path("api/file_upload_upper", views.file_upload_upper),
 
     path('api/get_xray', views.get_xray),
+    path('api/get_lower_png', views.get_lower_png),
+    path('api/get_upper_png', views.get_upper_png),
 
 ]

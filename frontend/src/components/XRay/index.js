@@ -22,8 +22,8 @@ class XRay extends React.Component{
         };
     }
     componentDidMount() {
-      console.log(this.props.case_id);
-      Service.get_xray(this.props.case_id).then((response) => {
+      // Service.get_xray(this.props.case_id).then((response) => {
+      Service.get_xray(1).then((response) => {
         this.setState({
           x_ray: response.data,
         });

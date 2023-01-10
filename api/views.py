@@ -81,7 +81,7 @@ def file_upload_upper(request):
         file_name = '{}.{}'.format(uuid.uuid4().hex[:10], ext)
         # file path relative to 'media' folder
         file_path = os.path.join('files', file_name)
-        absolute_file_path = os.path.join('frontend/public', '/files', file_name)
+        absolute_file_path = os.path.join('frontend/public', 'files', file_name)
 
         directory = os.path.dirname(absolute_file_path)
         if not os.path.exists(directory):
@@ -109,6 +109,32 @@ def get_xray(request):
     print(request.data)
     case_id = request.data['case_id']
     data = CASE.objects.filter(id=case_id).values_list("x_ray")
+    x_ray = ""
+    if data.count() > 0 : x_ray += data.first()[0]
+    else : x_ray = ""
+    x_ray = x_ray.replace("\\", "/")
+    return Response(x_ray)
+
+    
+# Lower png
+@api_view(['POST'])
+def get_lower_png(request):
+    print(request.data)
+    case_id = request.data['case_id']
+    data = CASE.objects.filter(id=case_id).values_list("lower_png")
+    x_ray = ""
+    if data.count() > 0 : x_ray += data.first()[0]
+    else : x_ray = ""
+    x_ray = x_ray.replace("\\", "/")
+    return Response(x_ray)
+
+    
+# Upper png
+@api_view(['POST'])
+def get_upper_png(request):
+    print(request.data)
+    case_id = request.data['case_id']
+    data = CASE.objects.filter(id=case_id).values_list("upper_png")
     x_ray = ""
     if data.count() > 0 : x_ray += data.first()[0]
     else : x_ray = ""

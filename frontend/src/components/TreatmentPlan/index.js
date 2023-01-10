@@ -23,7 +23,7 @@ export default class WrapContainer extends React.Component{
               <Breadcrumb className="font-size-18">
                 <Breadcrumb.Item>Treatment plan</Breadcrumb.Item>
               </Breadcrumb>
-              <div className="row main-container">
+              <div className="row main-container p-t-20">
                 Treatment plan
                 
                 <div className="col-md-12 p-b-20">

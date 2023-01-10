@@ -28,3 +28,23 @@ export const get_xray = (case_id) => {
   });
 }
 
+export const get_lower_png = (case_id) => {
+  let data = new FormData();
+  data.append("case_id", case_id);
+  return http.post("/api/get_lower_png", data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    }
+  });
+}
+
+export const get_upper_png = (case_id) => {
+  let data = new FormData();
+  data.append("case_id", case_id);
+  return http.post("/api/get_upper_png", data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    }
+  });
+}
+
