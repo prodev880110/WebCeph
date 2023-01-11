@@ -1,40 +1,4 @@
-.error-message {
-  padding: 0.6rem;
-  margin-top: 0.6rem;
-  background-color: #a73a38;
-  text-align: center;
-  color: #ffeff1;
-}
 
-
-.color-white{
-  color: #fff!important;
-}
-
-.text-right{
-  text-align: right;
-}
-.text-center{
-  text-align: center;
-}
-
-.main-container{
-  background-color: #fff;
-}
-
-.p-t-170{
-  padding-top: 170px;
-}
-.p-t-20{
-  padding-top: 20px;
-}
-.p-b-20{
-  padding-bottom: 20px;
-}
-
-.font-size-18{
-  font-size: 18px!important;
-}
 .preview_image_div{
   height: 300px;
   border: 1px dotted #b3afaf;

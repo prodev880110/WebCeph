@@ -28,6 +28,7 @@ class FileUpload extends React.Component{
       this.upload_lower = this.upload_lower.bind(this);
       this.selectFile_upper = this.selectFile_upper.bind(this);
       this.upload_upper = this.upload_upper.bind(this);
+      this.allUpload = this.allUpload.bind(this);
   
       this.state = {
         case_id: 0,
@@ -63,14 +64,123 @@ class FileUpload extends React.Component{
     
 
     componentDidMount() {
-      UploadService.getCaseId().then((response) => {
+      
+    }
+    allUpload() {
+      if(!this.state.selectedFiles_xray)
+          this.setState({
+            message_xray: "Selete this png file!",
+          });
+        else if(!this.state.selectedFiles_lower)
+          this.setState({
+            message_lower: "Select this stl file!",
+          });
+        else if(!this.state.selectedFiles_upper)
+          this.setState({
+            message_upper: "Select this stl file!",
+          });
+        else{
+          UploadService.getCaseId().then((response) => {
+            this.setState({
+              case_id: response.data,
+            });
+            this.props.GetCaseId(response.data);
+            this.start_upload()
+              this.upload_xray();
+              this.upload_lower();
+              this.upload_upper();
+          });
+        }
+    }
+    start_upload(){
+      //////  upload xray
+      let currentFile = this.state.selectedFiles_xray[0];
+  
+      this.setState({
+        progress_xray: 0,
+        currentFile_xray: currentFile,
+      });
+  
+      UploadService.upload(currentFile, this.state.case_id, "api/file_upload_xray", (event) => {
         this.setState({
-          case_id: response.data,
+          progress_xray: Math.round((100 * event.loaded) / event.total),
         });
-        this.props.GetCaseId(response.data);
+      })
+        .then((response) => {
+          this.setState({
+            message_xray: response.data.message,
+          });
+          /////   upload lower
+          currentFile = this.state.selectedFiles_lower[0];
+          this.setState({
+            progress_lower: 0,
+            currentFile_lower: currentFile,
+          });
+      
+          UploadService.upload(currentFile, this.state.case_id, "api/file_upload_lower", (event) => {
+            this.setState({
+              progress_lower: Math.round((100 * event.loaded) / event.total),
+            });
+          })
+            .then((response) => {
+              this.setState({
+                message_lower: response.data.message,
+              });
+              /////////  upload upper
+              currentFile = this.state.selectedFiles_upper[0];
+  
+              this.setState({
+                progress_upper: 0,
+                currentFile_upper: currentFile,
+              });
+          
+              UploadService.upload(currentFile, this.state.case_id, "api/file_upload_upper", (event) => {
+                this.setState({
+                  progress_upper: Math.round((100 * event.loaded) / event.total),
+                });
+              })
+                .then((response) => {
+                  this.setState({
+                    message_upper: response.data.message,
+                  });
+                  
+                })
+                .catch(() => {
+                  this.setState({
+                    progress_upper: 0,
+                    message_upper: "Could not upload the file!",
+                    currentFile_upper: undefined,
+                  });
+                });
+          
+              this.setState({
+                selectedFiles_upper: undefined,
+              });
+            })
+            .catch(() => {
+              this.setState({
+                progress_lower: 0,
+                message_lower: "Could not upload the file!",
+                currentFile_lower: undefined,
+              });
+            });
+      
+          this.setState({
+            selectedFiles_lower: undefined,
+          });
+        })
+        .catch(() => {
+          this.setState({
+            progress_xray: 0,
+            message_xray: "Could not upload the file!",
+            currentFile_xray: undefined,
+          });
+        });
+  
+      this.setState({
+        selectedFiles_xray: undefined,
       });
     }
-  
     //////    x-ray
     selectFile_xray(event) {
       this.setState({
@@ -90,34 +200,7 @@ class FileUpload extends React.Component{
     }
   
     upload_xray() {
-      let currentFile = this.state.selectedFiles_xray[0];
-  
-      this.setState({
-        progress_xray: 0,
-        currentFile_xray: currentFile,
-      });
-  
-      UploadService.upload(currentFile, this.state.case_id, "api/file_upload_xray", (event) => {
-        this.setState({
-          progress_xray: Math.round((100 * event.loaded) / event.total),
-        });
-      })
-        .then((response) => {
-          this.setState({
-            message_xray: response.data.message,
-          });
-        })
-        .catch(() => {
-          this.setState({
-            progress_xray: 0,
-            message_xray: "Could not upload the file!",
-            currentFile_xray: undefined,
-          });
-        });
-  
-      this.setState({
-        selectedFiles_xray: undefined,
-      });
+      
     }
     /////////   lower
     selectFile_lower(event) {
@@ -140,32 +223,7 @@ class FileUpload extends React.Component{
     upload_lower() {
       let currentFile = this.state.selectedFiles_lower[0];
   
-      this.setState({
-        progress_lower: 0,
-        currentFile_lower: currentFile,
-      });
-  
-      UploadService.upload(currentFile, this.state.case_id, "api/file_upload_lower", (event) => {
-        this.setState({
-          progress_lower: Math.round((100 * event.loaded) / event.total),
-        });
-      })
-        .then((response) => {
-          this.setState({
-            message_lower: response.data.message,
-          });
-        })
-        .catch(() => {
-          this.setState({
-            progress_lower: 0,
-            message_lower: "Could not upload the file!",
-            currentFile_lower: undefined,
-          });
-        });
-  
-      this.setState({
-        selectedFiles_lower: undefined,
-      });
+      
     }
     ///////  upper
     selectFile_upper(event) {
@@ -186,35 +244,7 @@ class FileUpload extends React.Component{
       }
   
     upload_upper() {
-      let currentFile = this.state.selectedFiles_upper[0];
-  
-      this.setState({
-        progress_upper: 0,
-        currentFile_upper: currentFile,
-      });
-  
-      UploadService.upload(currentFile, this.state.case_id, "api/file_upload_upper", (event) => {
-        this.setState({
-          progress_upper: Math.round((100 * event.loaded) / event.total),
-        });
-      })
-        .then((response) => {
-          this.setState({
-            message_upper: response.data.message,
-          });
-          
-        })
-        .catch(() => {
-          this.setState({
-            progress_upper: 0,
-            message_upper: "Could not upload the file!",
-            currentFile_upper: undefined,
-          });
-        });
-  
-      this.setState({
-        selectedFiles_upper: undefined,
-      });
+      
     }
 
 
@@ -264,29 +294,15 @@ class FileUpload extends React.Component{
                       </div>
                     </div>
                   )}
-
+                  <div className="alert alert-light" role="alert">
+                    Select X_RAY PNG File.
+                  </div>
                   <label className="btn btn-default">
                     <input type="file" onChange={this.selectFile_xray} />
                   </label>
-                  <button
-                    className="btn btn-success"
-                    disabled={!selectedFiles_xray}
-                    onClick={this.upload_xray}
-                  >
-                    X-Ray File Upload
-                  </button>
-
                   <div className="alert alert-light" role="alert">
                     {message_xray}
                   </div>
-                  {/* <div className="preview_image_div">
-                    {selectedFiles_preview_xray ? (<img alt="previewImage" src={selectedFiles_preview_xray}/>) : (
-                      <div className="text-center">
-                        
-                      </div>
-                    )}
-                    
-                  </div> */}
                   
                 </div>
                 <div className="col-md-4 p-t-20">
@@ -305,28 +321,17 @@ class FileUpload extends React.Component{
                     </div>
                   )}
 
+                  <div className="alert alert-light" role="alert">
+                    Select LOWER STL File.
+                  </div>
                   <label className="btn btn-default">
                     <input type="file" onChange={this.selectFile_lower} />
                   </label>
                     
-                  <button
-                    className="btn btn-success"
-                    disabled={!selectedFiles_lower}
-                    onClick={this.upload_lower}
-                  >
-                    Lower File Upload
-                  </button>
 
                   <div className="alert alert-light" role="alert">
                     {message_lower}
                   </div>
-                  {/* <div className="preview_image_div">
-                    {selectedFiles_preview_lower ? (<img alt="previewImage" src={selectedFiles_preview_lower}/>) : (
-                      <div className="text-center">
-                        
-                      </div>
-                    )}
-                  </div> */}
 
                 </div>
                 <div className="col-md-4 p-t-20">
@@ -345,39 +350,27 @@ class FileUpload extends React.Component{
                     </div>
                   )}
 
+                  <div className="alert alert-light" role="alert">
+                    Select UPPER STL File.
+                  </div>
                   <label className="btn btn-default">
                     <input type="file" onChange={this.selectFile_upper} />
                   </label>
                     
-                  <button
-                    className="btn btn-success"
-                    disabled={!selectedFiles_upper}
-                    onClick={this.upload_upper}
-                  >
-                    Upper File Upload
-                  </button>
-
                   <div className="alert alert-light" role="alert">
                     {message_upper}
                   </div>
-                  {/* <div className="preview_image_div">
-                    {selectedFiles_preview_upper ? (<img alt="previewImage" src={selectedFiles_preview_upper}/>) : (
-                      <div className="text-center">
-                        
-                      </div>
-                    )}
-                    
-                  </div> */}
-                  
                 </div>
                 <div className="col-md-12 row text-right p-t-20 p-b-20">
                   <div className="col-md-6">
-                    <h3>CASE_ID: {this.state.case_id}</h3>
+                    <h3>CASE_ID: {this.state.case_id > 0 ? this.state.case_id : "Upload Files to CASE_ID"}</h3>
                   </div>
                   
                   <div className="col-md-6">
-                    <Link to="/x_ray_adjustments"> 
-                      <button type="button" className="btn btn-info color-white GoNext"> Go To Next </button> 
+                    <button type="button" className="btn btn-info color-white" onClick={this.allUpload}> Upload </button> 
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <Link to={this.state.case_id > 0 ? "/x_ray_adjustments" : ""}> 
+                      <button type="button" disabled={this.state.case_id > 0 ? false : true} className="btn btn-info color-white GoNext"> Go To Next </button> 
                     </Link>
                   </div>
                 </div>

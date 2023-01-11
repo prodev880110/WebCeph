@@ -74,3 +74,46 @@ ul {
 .search-app {
   padding: 2.5rem 0;
 }
+
+.error-message {
+  padding: 0.6rem;
+  margin-top: 0.6rem;
+  background-color: #a73a38;
+  text-align: center;
+  color: #ffeff1;
+}
+
+
+.color-white{
+  color: #fff!important;
+}
+
+.text-left{
+  text-align: left;
+}
+.text-right{
+  text-align: right;
+}
+.text-center{
+  text-align: center;
+}
+
+.main-container{
+  background-color: #fff;
+}
+
+.p-t-20{
+  padding-top: 20px;
+}
+.p-b-20{
+  padding-bottom: 20px;
+}
+.p-r-20{
+  padding-right: 20px;
+}
+.p-l-20{
+  padding-left: 20px;
+}
+.font-size-18{
+  font-size: 18px!important;
+}

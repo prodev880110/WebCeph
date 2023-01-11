@@ -13,5 +13,11 @@ urlpatterns = [
     path('api/get_xray', views.get_xray),
     path('api/get_lower_png', views.get_lower_png),
     path('api/get_upper_png', views.get_upper_png),
+    path('api/save_xray_points', views.save_xray_points),
+    path('api/save_lower_points', views.save_lower_points),
+    path('api/save_upper_points', views.save_upper_points),
+    
+    path('api/get_treatment', views.get_treatment),
+    path('api/save_note', views.save_note),
 
 ]

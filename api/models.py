@@ -18,8 +18,6 @@ class CASE(models.Model):
     upper_png = models.CharField("", max_length=100)
     lower_png = models.CharField("", max_length=100)
     
-    def __str__(self):
-        return self.name
 
 class X_RAY(models.Model):
     x_ray = models.CharField("", max_length=100)
@@ -40,8 +38,7 @@ class X_RAY(models.Model):
     lower_teeth_2x = models.FloatField()
     lower_teeth_2y = models.FloatField()
     
-    def __str__(self):
-        return self.name
+
 
 class UPPER(models.Model):
     upper_png = models.CharField("", max_length=100)
@@ -108,8 +105,6 @@ class UPPER(models.Model):
     _4L_x = models.FloatField()
     _4L_y = models.FloatField()
 
-    def __str__(self):
-        return self.name
 
 class LOWER(models.Model):
     lower_png = models.CharField("", max_length=100)
@@ -176,6 +171,10 @@ class LOWER(models.Model):
     _4L_x = models.FloatField()
     _4L_y = models.FloatField()
 
-    def __str__(self):
-        return self.name
 
+
+class TreatmentPlan(models.Model):
+    upper = models.CharField("", max_length=100)
+    lower = models.CharField("", max_length=100)
+    x_ray = models.CharField("", max_length=100)
+    note = models.TextField()
