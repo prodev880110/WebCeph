@@ -1,20 +1,13 @@
 
-import React , { useState }  from "react";
+import React  from "react";
 import { connect } from "react-redux";
-import { Breadcrumb, Layout, message} from 'antd';
+import { Breadcrumb, Layout} from 'antd';
 import * as UploadService from "../../api";
 import {Link} from 'react-router-dom';
 import "./index.css";
 import * as ACTION_TYPE from "../../action/types";
 
-import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
-const { Header, Content, Footer, Sider } = Layout;
+const {  Content } = Layout;
 
 
 class FileUpload extends React.Component{
@@ -23,11 +16,8 @@ class FileUpload extends React.Component{
       super(props);
       
       this.selectFile_xray = this.selectFile_xray.bind(this);
-      this.upload_xray = this.upload_xray.bind(this);
       this.selectFile_lower = this.selectFile_lower.bind(this);
-      this.upload_lower = this.upload_lower.bind(this);
       this.selectFile_upper = this.selectFile_upper.bind(this);
-      this.upload_upper = this.upload_upper.bind(this);
       this.allUpload = this.allUpload.bind(this);
   
       this.state = {
@@ -38,24 +28,18 @@ class FileUpload extends React.Component{
         currentFile_xray: undefined,
         progress_xray: 0,
         message_xray: "",
-        fileInfos_xray: [],
-        state_xray: false,
         
         selectedFiles_lower: undefined,
         selectedFiles_preview_lower: undefined,
         currentFile_lower: undefined,
         progress_lower: 0,
         message_lower: "",
-        fileInfos_lower: [],
-        state_lower: false,
         
         selectedFiles_upper: undefined,
         selectedFiles_preview_upper: undefined,
         currentFile_upper: undefined,
         progress_upper: 0,
         message_upper: "",
-        fileInfos_upper: [],
-        state_upper: false,
       };
 
       this.props.GetCaseId()
@@ -199,9 +183,6 @@ class FileUpload extends React.Component{
         }.bind(this);
     }
   
-    upload_xray() {
-      
-    }
     /////////   lower
     selectFile_lower(event) {
       this.setState({
@@ -219,12 +200,7 @@ class FileUpload extends React.Component{
           })
         }.bind(this);
     }
-  
-    upload_lower() {
-      let currentFile = this.state.selectedFiles_lower[0];
-  
-      
-    }
+ 
     ///////  upper
     selectFile_upper(event) {
       this.setState({
@@ -243,34 +219,20 @@ class FileUpload extends React.Component{
         }.bind(this);
       }
   
-    upload_upper() {
-      
-    }
+   
 
 
     render() {
       const {
-        selectedFiles_xray,
-        selectedFiles_preview_xray,
         currentFile_xray,
         progress_xray,
         message_xray,
-        fileInfos_xray,
-        state_xray,
-        selectedFiles_lower,
-        selectedFiles_preview_lower,
         currentFile_lower,
         progress_lower,
         message_lower,
-        fileInfos_lower,
-        state_lower,
-        selectedFiles_upper,
-        selectedFiles_preview_upper,
         currentFile_upper,
         progress_upper,
         message_upper,
-        fileInfos_upper,
-        state_upper,
       } = this.state;
       
         return (

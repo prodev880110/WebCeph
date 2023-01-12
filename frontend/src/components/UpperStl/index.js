@@ -1,17 +1,10 @@
 import { Breadcrumb, Layout} from 'antd';
-import React , { useState }  from "react";
+import React  from "react";
 import { connect } from "react-redux";
 import "./index.css";
 import {Link} from 'react-router-dom';
 import * as Service from "../../api";
-import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
-const { Header, Content, Footer, Sider } = Layout;
+const { Content } = Layout;
 
 
 class UpperStl extends React.Component{
@@ -89,7 +82,6 @@ class UpperStl extends React.Component{
     }
     onDrag = (evt, id) => {
       evt.preventDefault();
-      let element = evt.currentTarget;
       let div_x = document.getElementById("image-editor-canvas-upper").offsetLeft;
       let div_y = document.getElementById("image-editor-canvas-upper").offsetTop;
       let p_x = evt.pageX - div_x;
@@ -448,7 +440,7 @@ class UpperStl extends React.Component{
       });
     }
     render() {
-      const {message_type, message, scale_point, upper_png, _1_distal_x, _1_distal_y, _1_mesial_x, _1_mesial_y, _2_distal_x, _2_distal_y, _2_mesial_x, _2_mesial_y, _3_distal_x, _3_distal_y, _3_mesial_x, _3_mesial_y, _4_distal_x, _4_distal_y, _4_mesial_x, _4_mesial_y, _5_distal_x, _5_distal_y, _5_mesial_x, _5_mesial_y, _6_distal_x, _6_distal_y, _6_mesial_x, _6_mesial_y, _7_distal_x, _7_distal_y, _7_mesial_x, _7_mesial_y, _8_distal_x, _8_distal_y, _8_mesial_x, _8_mesial_y, _9_distal_x, _9_distal_y, _9_mesial_x, _9_mesial_y, _10_distal_x, _10_distal_y, _10_mesial_x, _10_mesial_y, _11_distal_x, _11_distal_y, _11_mesial_x, _11_mesial_y, _12_distal_x, _12_distal_y, _12_mesial_x, _12_mesial_y, _13_distal_x, _13_distal_y, _13_mesial_x, _13_mesial_y, _14_distal_x, _14_distal_y, _14_mesial_x, _14_mesial_y, _6L_x, _6L_y, _5L_x, _5L_y, _4L_x, _4L_y} = this.state;
+      const {message_type, message, scale_point, upper_png, _1_distal_x, _1_distal_y, _1_mesial_x, _1_mesial_y, _2_distal_x, _2_distal_y, _2_mesial_x, _2_mesial_y, _3_distal_x, _3_distal_y, _3_mesial_x, _3_mesial_y, _4_distal_x, _4_distal_y, _4_mesial_x, _4_mesial_y, _5_distal_x, _5_distal_y, _5_mesial_x, _5_mesial_y, _6_distal_x, _6_distal_y, _6_mesial_x, _6_mesial_y, _7_distal_x, _7_distal_y, _7_mesial_x, _7_mesial_y, _8_distal_x, _8_distal_y, _8_mesial_x, _8_mesial_y, _9_distal_x, _9_distal_y, _9_mesial_x, _9_mesial_y, _10_distal_x, _10_distal_y, _10_mesial_x, _10_mesial_y, _11_distal_x, _11_distal_y, _11_mesial_x, _11_mesial_y, _12_distal_x, _12_distal_y, _12_mesial_x, _12_mesial_y, _13_distal_x, _13_distal_y, _13_mesial_x, _13_mesial_y, _14_distal_x, _14_distal_y, _14_mesial_x, _14_mesial_y} = this.state;
         return (
             <Content style={{ margin: '24px 16px', overflow: 'initial' }}>
               <Breadcrumb className="font-size-18">
@@ -459,37 +451,35 @@ class UpperStl extends React.Component{
                   <div className='col-md-3'></div>
                   <div className='col-md-6 edit-image-panel-upper'>
                     <div id='image-editor-canvas-upper' className='image-editor-canvas-upper' style={{ "background-image": "url("+(process.env.PUBLIC_URL+upper_png)+")" }}>
-                      <img style={{left: _1_distal_x * scale_point, top: _1_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_1_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _1_mesial_x * scale_point, top: _1_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_1_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _2_distal_x * scale_point, top: _2_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_2_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _2_mesial_x * scale_point, top: _2_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_2_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _3_distal_x * scale_point, top: _3_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_3_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _3_mesial_x * scale_point, top: _3_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_3_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _4_distal_x * scale_point, top: _4_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_4_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _4_mesial_x * scale_point, top: _4_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_4_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _5_distal_x * scale_point, top: _5_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_5_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _5_mesial_x * scale_point, top: _5_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_5_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _6_distal_x * scale_point, top: _6_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_6_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _6_mesial_x * scale_point, top: _6_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_6_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _7_distal_x * scale_point, top: _7_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_7_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _7_mesial_x * scale_point, top: _7_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_7_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _8_distal_x * scale_point, top: _8_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_8_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _8_mesial_x * scale_point, top: _8_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_8_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _9_distal_x * scale_point, top: _9_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_9_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _9_mesial_x * scale_point, top: _9_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_9_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _10_distal_x * scale_point, top: _10_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_10_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _10_mesial_x * scale_point, top: _10_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_10_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _11_distal_x * scale_point, top: _11_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_11_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _11_mesial_x * scale_point, top: _11_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_11_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _12_distal_x * scale_point, top: _12_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_12_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _12_mesial_x * scale_point, top: _12_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_12_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _13_distal_x * scale_point, top: _13_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_13_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _13_mesial_x * scale_point, top: _13_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_13_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _14_distal_x * scale_point, top: _14_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_14_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _14_mesial_x * scale_point, top: _14_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_14_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      {/* <img style={{left: _6L_x * scale_point, top: _6L_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_6L")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _5L_x * scale_point, top: _5L_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_5L")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: _4L_x * scale_point, top: _4L_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_4L")} src={process.env.PUBLIC_URL+"point_normal.svg"}/> */}
+                      <img alt="" style={{left: _1_distal_x * scale_point, top: _1_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_1_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _1_mesial_x * scale_point, top: _1_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_1_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _2_distal_x * scale_point, top: _2_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_2_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _2_mesial_x * scale_point, top: _2_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_2_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _3_distal_x * scale_point, top: _3_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_3_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _3_mesial_x * scale_point, top: _3_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_3_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _4_distal_x * scale_point, top: _4_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_4_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _4_mesial_x * scale_point, top: _4_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_4_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _5_distal_x * scale_point, top: _5_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_5_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _5_mesial_x * scale_point, top: _5_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_5_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _6_distal_x * scale_point, top: _6_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_6_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _6_mesial_x * scale_point, top: _6_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_6_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _7_distal_x * scale_point, top: _7_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_7_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _7_mesial_x * scale_point, top: _7_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_7_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _8_distal_x * scale_point, top: _8_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_8_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _8_mesial_x * scale_point, top: _8_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_8_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _9_distal_x * scale_point, top: _9_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_9_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _9_mesial_x * scale_point, top: _9_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_9_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _10_distal_x * scale_point, top: _10_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_10_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _10_mesial_x * scale_point, top: _10_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_10_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _11_distal_x * scale_point, top: _11_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_11_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _11_mesial_x * scale_point, top: _11_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_11_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _12_distal_x * scale_point, top: _12_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_12_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _12_mesial_x * scale_point, top: _12_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_12_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _13_distal_x * scale_point, top: _13_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_13_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _13_mesial_x * scale_point, top: _13_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_13_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _14_distal_x * scale_point, top: _14_distal_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_14_distal")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: _14_mesial_x * scale_point, top: _14_mesial_y * scale_point}} className='point' onDrag={e => this.onDrag(e, "_14_mesial")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      
 
                     </div>
                   </div>

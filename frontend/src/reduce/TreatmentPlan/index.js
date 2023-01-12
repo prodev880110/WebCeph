@@ -1,4 +1,4 @@
-import * as ACTION_TYPE from "../../action/types";
+
 
 const initialState = {
   finally_xray : "",

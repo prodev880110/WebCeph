@@ -1,17 +1,10 @@
 import { Breadcrumb, Layout} from 'antd';
-import React , { useState }  from "react";
+import React  from "react";
 import { connect } from "react-redux";
 import "./index.css";
 import {Link} from 'react-router-dom';
 import * as Service from "../../api";
-import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
-const { Header, Content, Footer, Sider } = Layout;
+const { Content } = Layout;
 
 
 class TreatmentPlan extends React.Component{
@@ -54,7 +47,7 @@ class TreatmentPlan extends React.Component{
       });
     }
     render() {
-      const {x_ray, lower, upper, message, message_type, note} = this.state
+      const {x_ray, lower, upper, note} = this.state
         return (
             <Content style={{ margin: '24px 16px', overflow: 'initial' }}>
               <Breadcrumb className="font-size-18">
@@ -63,13 +56,13 @@ class TreatmentPlan extends React.Component{
               <div className="row main-container p-t-20">
                 
                 <div className='col-4 treatmentplan-image'>
-                  <img src={process.env.PUBLIC_URL+x_ray}/>
+                  <img alt="" src={process.env.PUBLIC_URL+x_ray}/>
                 </div>
                 <div className='col-4 treatmentplan-image'>
-                  <img src={process.env.PUBLIC_URL+lower}/>
+                  <img alt="" src={process.env.PUBLIC_URL+lower}/>
                 </div>
                 <div className='col-4 treatmentplan-image'>
-                  <img src={process.env.PUBLIC_URL+upper}/>
+                  <img alt="" src={process.env.PUBLIC_URL+upper}/>
                 </div>
                 <div className='col-md-12 row p-t-20'>
                   <div className='col-md-3'></div>

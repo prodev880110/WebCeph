@@ -1,17 +1,10 @@
 import { Breadcrumb, Layout} from 'antd';
-import React , { useRef, useState }  from "react";
+import React from "react";
 import { connect } from "react-redux";
 import "./index.css";
 import {Link} from 'react-router-dom';
 import * as Service from "../../api";
-import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
-const { Header, Content, Footer, Sider } = Layout;
+const { Content } = Layout;
 
 
 class XRay extends React.Component{
@@ -44,7 +37,6 @@ class XRay extends React.Component{
     
     onDrag = (evt, id) => {
       evt.preventDefault();
-      let element = evt.currentTarget;
       let div_x = document.getElementById("image-editor-canvas-xray").offsetLeft;
       let div_y = document.getElementById("image-editor-canvas-xray").offsetTop;
       let p_x = evt.pageX - div_x;
@@ -183,14 +175,14 @@ class XRay extends React.Component{
                   <div className='col-md-3'></div>
                   <div className='col-md-6 edit-image-panel-xray'>
                     <div id='image-editor-canvas-xray' className='image-editor-canvas-xray' style={{ "background-image": "url("+(process.env.PUBLIC_URL+x_ray)+")" }}>
-                      <img style={{left: upper_jaw_1x * scale_point, top: upper_jaw_1y * scale_point}} className='point' onDrag={e => this.onDrag(e, "upper_jaw_1")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: upper_jaw_2x * scale_point, top: upper_jaw_2y * scale_point}} className='point' onDrag={e => this.onDrag(e, "upper_jaw_2")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: upper_teeth_1x * scale_point, top: upper_teeth_1y * scale_point}} className='point' onDrag={e => this.onDrag(e, "upper_teeth_1")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: upper_teeth_2x * scale_point, top: upper_teeth_2y * scale_point}} className='point' onDrag={e => this.onDrag(e, "upper_teeth_2")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: lower_jaw_1x * scale_point, top: lower_jaw_1y * scale_point}} className='point' onDrag={e => this.onDrag(e, "lower_jaw_1")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: lower_jaw_2x * scale_point, top: lower_jaw_2y * scale_point}} className='point' onDrag={e => this.onDrag(e, "lower_jaw_2")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: lower_teeth_1x * scale_point, top: lower_teeth_1y * scale_point}} className='point' onDrag={e => this.onDrag(e, "lower_teeth_1")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
-                      <img style={{left: lower_teeth_2x * scale_point, top: lower_teeth_2y * scale_point}} className='point' onDrag={e => this.onDrag(e, "lower_teeth_2")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: upper_jaw_1x * scale_point, top: upper_jaw_1y * scale_point}} className='point' onDrag={e => this.onDrag(e, "upper_jaw_1")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: upper_jaw_2x * scale_point, top: upper_jaw_2y * scale_point}} className='point' onDrag={e => this.onDrag(e, "upper_jaw_2")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: upper_teeth_1x * scale_point, top: upper_teeth_1y * scale_point}} className='point' onDrag={e => this.onDrag(e, "upper_teeth_1")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: upper_teeth_2x * scale_point, top: upper_teeth_2y * scale_point}} className='point' onDrag={e => this.onDrag(e, "upper_teeth_2")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: lower_jaw_1x * scale_point, top: lower_jaw_1y * scale_point}} className='point' onDrag={e => this.onDrag(e, "lower_jaw_1")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: lower_jaw_2x * scale_point, top: lower_jaw_2y * scale_point}} className='point' onDrag={e => this.onDrag(e, "lower_jaw_2")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: lower_teeth_1x * scale_point, top: lower_teeth_1y * scale_point}} className='point' onDrag={e => this.onDrag(e, "lower_teeth_1")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
+                      <img alt="" style={{left: lower_teeth_2x * scale_point, top: lower_teeth_2y * scale_point}} className='point' onDrag={e => this.onDrag(e, "lower_teeth_2")} src={process.env.PUBLIC_URL+"point_normal.svg"}/>
                       
                     </div>
                   </div>
