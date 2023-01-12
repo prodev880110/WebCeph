@@ -4,7 +4,6 @@ from rest_framework import status
 from django.shortcuts import render
 
 
-
 import os
 import uuid
 
@@ -90,6 +89,10 @@ def file_upload_lower(request):
         with open(absolute_file_path, 'wb+') as destination:
             for chunk in file.chunks():
                 destination.write(chunk)
+        src = absolute_file_path  # may be stl or obj
+        dst = absolute_file_path+".obj"  # may be stl or obj
+        callback = lambda code: print(code)
+
     
     file_path = file_path.replace("\\", "/")
     generated_png = generate_stl2png(absolute_file_path)
@@ -170,7 +173,7 @@ def file_upload_lower(request):
     newLOWER._4L_x = 123
     newLOWER._4L_y = 123
     newLOWER.save()
-    return Response({"status": 1, "message": "Success to upload Lower Stl Image. Try again!"})
+    return Response({"status": 1, "message": "Success to upload Lower Stl Image."})
     
 @api_view(['POST'])
 def file_upload_upper(request):
@@ -270,7 +273,7 @@ def file_upload_upper(request):
     newUPPER._4L_x = 123
     newUPPER._4L_y = 123
     newUPPER.save()
-    return Response({"status": 1, "message": "Success to upload Upper Stl Image. Try again!"})
+    return Response({"status": 1, "message": "Success to upload Upper Stl Image."})
 
 
 
