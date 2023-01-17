@@ -29,7 +29,7 @@ def file_upload_xray(request):
         file_name = '{}.{}'.format(uuid.uuid4().hex[:10], ext)
         # file path relative to 'media' folder
         file_path = os.path.join('files', file_name)
-        absolute_file_path = os.path.join('frontend/public', 'files', file_name)
+        absolute_file_path = os.path.join('frontend/build', 'files', file_name)
 
         directory = os.path.dirname(absolute_file_path)
         if not os.path.exists(directory):
@@ -80,7 +80,7 @@ def file_upload_lower(request):
         file_name = '{}.{}'.format(uuid.uuid4().hex[:10], ext)
         # file path relative to 'media' folder
         file_path = os.path.join('files', file_name)
-        absolute_file_path = os.path.join('frontend/public', 'files', file_name)
+        absolute_file_path = os.path.join('frontend/build', 'files', file_name)
 
         directory = os.path.dirname(absolute_file_path)
         if not os.path.exists(directory):
@@ -183,7 +183,7 @@ def file_upload_upper(request):
         file_name = '{}.{}'.format(uuid.uuid4().hex[:10], ext)
         # file path relative to 'media' folder
         file_path = os.path.join('files', file_name)
-        absolute_file_path = os.path.join('frontend/public', 'files', file_name)
+        absolute_file_path = os.path.join('frontend/build', 'files', file_name)
 
         directory = os.path.dirname(absolute_file_path)
         if not os.path.exists(directory):

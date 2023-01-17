@@ -5,3 +5,11 @@ frontend/node_modules
 /.pnp
 .pnp.js
 
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+.ebextensions
+
+env
